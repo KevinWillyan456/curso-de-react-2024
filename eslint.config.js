@@ -33,6 +33,7 @@ export default [
                 'warn',
                 { allowConstantExport: true },
             ],
+            'reack/prop-types': 'off',
         },
     },
 ]
