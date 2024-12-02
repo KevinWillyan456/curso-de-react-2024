@@ -52,7 +52,17 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick, onEditTaskClick }) {
                     <Button onClick={() => handleEditTaskClick(task)}>
                         <EditIcon />
                     </Button>
-                    <Button onClick={() => onDeleteTaskClick(task.id)}>
+                    <Button
+                        onClick={() => {
+                            if (
+                                window.confirm(
+                                    'Deseja realmente excluir esta tarefa?'
+                                )
+                            ) {
+                                onDeleteTaskClick(task.id)
+                            }
+                        }}
+                    >
                         <TrashIcon />
                     </Button>
                 </li>
