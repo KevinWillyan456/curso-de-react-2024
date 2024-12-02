@@ -7,9 +7,10 @@ function TaskPage() {
     const [searchParams] = useSearchParams()
     const title = searchParams.get('title')
     const description = searchParams.get('description')
+    const isCompleted = searchParams.get('isCompleted')
 
     return (
-        <div className="h-screen w-screen bg-slate-500 p-6">
+        <div className="w-screen min-h-screen bg-slate-500 p-6 flex">
             <div className="w-[500px] mx-auto space-y-4">
                 <div className="flex justify-center relative mb-6">
                     <button
@@ -26,6 +27,24 @@ function TaskPage() {
                         {title}
                     </h2>
                     <p className="text-slate-600">{description}</p>
+                    <p
+                        className={`mt-3 font-bold ${
+                            isCompleted === 'true'
+                                ? 'text-lime-600'
+                                : 'text-red-600'
+                        }`}
+                    >
+                        {isCompleted === 'true' ? 'Concluída' : 'Pendente'}
+                    </p>
+
+                    <div className="mt-4">
+                        <button
+                            onClick={() => navigate(-1)}
+                            className="bg-slate-400 text-white px-4 py-2 rounded-md"
+                        >
+                            Voltar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
